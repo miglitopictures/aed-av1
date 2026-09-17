@@ -37,16 +37,7 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *inserirOrdenado(NoLista *inicio, int valor) {
-    if (!inicio) return novoNo(valor);
-
-    if (inicio->valor > valor) {
-        NoLista *newItem = novoNo(valor);
-        newItem->prox = inicio;
-        return newItem;
-    }
-    
-    inicio->prox = inserirOrdenado(inicio->prox, valor);
-    
+    /* TODO: implemente aqui */
     return inicio;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */

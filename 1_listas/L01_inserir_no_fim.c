@@ -37,11 +37,7 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *inserirNoFim(NoLista *inicio, int valor) {
-    if (!inicio) {
-        inicio = novoNo(valor);
-        return inicio;
-    }
-    inicio->prox = inserirNoFim(inicio->prox, valor);
+    /* TODO: implemente aqui */
     return inicio;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */

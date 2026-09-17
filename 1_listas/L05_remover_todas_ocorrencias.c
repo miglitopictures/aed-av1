@@ -36,13 +36,7 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *removerTodasOcorrencias(NoLista *inicio, int valor) {
-    if (!inicio) return NULL;
-    if (inicio->valor == valor) {
-        NoLista *proximo = inicio->prox;
-        free(inicio);
-        return removerTodasOcorrencias(proximo, valor);;
-    }
-    inicio->prox = removerTodasOcorrencias(inicio->prox, valor);
+    /* TODO: implemente aqui */
     return inicio;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
