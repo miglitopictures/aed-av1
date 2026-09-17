@@ -1,12 +1,11 @@
-# Estudo AED — AV1
+# Praticando AED
+> Listas, Pilhas, Filas e Arvores Binárias de Busca.
 
-40 exercícios em C com **testes automáticos**, sobre listas, pilhas, filas e árvores
-binárias de busca. Gerados pelo Claude Opus 5 a partir dos simulados e da prova AV1 de **Algoritmos e
-Estruturas de Dados** (3º período de ADS — CESAR School).
+40 exercícios em C com **testes automáticos**. Gerados pelo Claude Opus 5 a partir dos simulados e da prova AV1 de **Algoritmos e Estruturas de Dados** (3º período de ADS — CESAR School).
 
 **Sem soluções neste repositório**, de propósito. As minhas ficam em um fork.
 
-## Usar
+## Como usar
 
 ```bash
 chmod +x testar.sh     # só na primeira vez
