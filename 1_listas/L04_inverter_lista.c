@@ -38,7 +38,23 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *inverterLista(NoLista *inicio) {
-    /* TODO: implemente aqui */
+    if (!inicio) return NULL;
+
+    NoLista *anterior = NULL;
+    NoLista *proximo = inicio->prox;
+
+    while (proximo != NULL) {
+        // invertemos a direcao do ponteiro
+        inicio->prox = anterior;
+
+        // andamos uma casinha
+        anterior = inicio;
+        inicio = proximo;
+        proximo = proximo->prox;
+    }
+
+    inicio->prox = anterior;
+
     return inicio;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
