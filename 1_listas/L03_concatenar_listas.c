@@ -40,9 +40,11 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *concatenarListas(NoLista *L1, NoLista *L2) {
-    /* TODO: implemente aqui */
+    if (!L1 || L1 == L2) return L2;
+    L1->prox = concatenarListas(L1->prox, L2);
     return L1;
 }
+
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 /* ------------------------------------------------------------------
