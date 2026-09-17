@@ -44,7 +44,7 @@ da subárvore direita; quem remove, libera.
 | 10 | lista duplamente encadeada | papel: rastreio | papel: rastreio | papel: ABB (prova + inédita) |
 
 Caíram nas avaliações: L02, L03, F02, P05, A02, A03, A04, A05, A08, A09, A10.
-O resto são variações e clássicos do tema.pelo Claude Opus 5
+O resto são variações e clássicos do tema.
 
 ## Como os testes foram validados
 
