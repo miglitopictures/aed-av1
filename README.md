@@ -24,6 +24,8 @@ Se o seu gcc não tiver suporte, use `SAN=0 ./testar.sh L01`.
 Nas questões de papel (P05, P10, F10, A08-A10) você preenche vetores com as respostas - nas de ABB, escreva a **pré-ordem** da árvore que desenhou. Para ver o gabarito das que
 errou, troque `MOSTRAR_GABARITO` para `1`.
 
+**Windows**: o código C roda sem mudança; só o testar.sh e os sanitizers pedem um ambiente Unix. O caminho mais fácil é o WSL (wsl --install + sudo apt install build-essential), e aí é igual ao Linux. Com MSYS2/Git Bash o script funciona, mas sem o teste de vazamento. Detalhes e alternativas em WINDOWS.md.
+
 **Convenções** (também no topo de cada arquivo): altura conta arestas (vazia = −1, só a
 raiz = 0); ABB não aceita repetidos; nó com dois filhos é substituído pelo menor valor
 da subárvore direita; quem remove, libera.
