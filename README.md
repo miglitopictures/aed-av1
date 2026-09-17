@@ -1,9 +1,9 @@
 # Praticando AED
 > Listas, Pilhas, Filas e Arvores Binárias de Busca.
 
-40 exercícios em C com **testes automáticos**. Gerados pelo Claude Opus 5 a partir dos simulados e da prova AV1 de **Algoritmos e Estruturas de Dados** (3º período de ADS — CESAR School).
+40 exercícios em C com **testes automáticos**. Gerados a partir dos simulados e da prova AV1 de **Algoritmos e Estruturas de Dados** (3º período de ADS - CESAR School) com propósitos de estudo.
 
-**Sem soluções neste repositório**, de propósito. As minhas ficam em um fork.
+**Sem soluções neste repositório**, de propósito. As minhas ficam em na branch `mig-solved`!
 
 ## Como usar
 
@@ -21,8 +21,7 @@ com o esperado x o obtido.
 Compila com AddressSanitizer: `free` esquecido vira ✗ no teste de vazamento, no fim.
 Se o seu gcc não tiver suporte, use `SAN=0 ./testar.sh L01`.
 
-Nas questões de papel (P05, P10, F10, A08–A10) você preenche vetores com as respostas —
-nas de ABB, escreva a **pré-ordem** da árvore que desenhou. Para ver o gabarito das que
+Nas questões de papel (P05, P10, F10, A08-A10) você preenche vetores com as respostas - nas de ABB, escreva a **pré-ordem** da árvore que desenhou. Para ver o gabarito das que
 errou, troque `MOSTRAR_GABARITO` para `1`.
 
 **Convenções** (também no topo de cada arquivo): altura conta arestas (vazia = −1, só a
@@ -45,7 +44,7 @@ da subárvore direita; quem remove, libera.
 | 10 | lista duplamente encadeada | papel: rastreio | papel: rastreio | papel: ABB (prova + inédita) |
 
 Caíram nas avaliações: L02, L03, F02, P05, A02, A03, A04, A05, A08, A09, A10.
-O resto são variações e clássicos do tema.
+O resto são variações e clássicos do tema.pelo Claude Opus 5
 
 ## Como os testes foram validados
 
@@ -63,5 +62,5 @@ Novas questões no mesmo formato e correções de enunciado são bem-vindas.
 
 ---
 
-*Material não oficial, feito com apoio de llms por um aluno (eu), sem vínculo com a coordenação ou o corpo docente
+*Material não oficial, feito com apoio de LLMs por um aluno (eu), sem vínculo com a coordenação ou o corpo docente
 da CESAR School. Enunciados adaptados dos simulados e provas, apenas para estudo.*
