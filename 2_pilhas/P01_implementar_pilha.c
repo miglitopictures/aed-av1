@@ -41,32 +41,56 @@ typedef struct {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 Pilha *criarPilha(void) {
-    /* TODO */
-    return NULL;
+    Pilha *novaPilha = malloc(sizeof(Pilha));
+    if (!novaPilha) return NULL;
+    novaPilha->topo = NULL;
+    novaPilha->tamanho = 0;
+    return novaPilha;
 }
 
 int pilhaVazia(Pilha *p) {
-    /* TODO */
-    return 0;
+    return (!p) || (p->tamanho == 0);
 }
 
 int empilhar(Pilha *p, int valor) {
-    /* TODO */
-    return 0;
+    if (!p) return 0;
+
+    NoPilha *newItem = malloc(sizeof(NoPilha));
+    if (!newItem) return 0;
+    
+    newItem->valor = valor;
+    newItem->prox = p->topo;
+
+    p->topo = newItem;
+    p->tamanho += 1;
+    return 1;
 }
 
 int desempilhar(Pilha *p, int *valor) {
-    /* TODO */
-    return 0;
+    if (pilhaVazia(p)) return 0;
+    *valor = p->topo->valor;
+    NoPilha *tmp = p->topo;
+    p->topo = p->topo->prox;
+    free(tmp);
+    p->tamanho -= 1;
+    return 1;
 }
 
 int consultarTopo(Pilha *p, int *valor) {
-    /* TODO */
-    return 0;
+    if (pilhaVazia(p)) return 0;
+    *valor = p->topo->valor;
+    return 1;
 }
 
 void liberarPilha(Pilha *p) {
-    /* TODO */
+    if (p) {
+        while(p->topo) {
+            NoPilha *tmp = p->topo;
+            p->topo = p->topo->prox;
+            free(tmp);
+        }
+        free(p);
+    }
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 

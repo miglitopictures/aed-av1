@@ -51,27 +51,6 @@ NoDuplo *inserirInicioDupla(NoDuplo *inicio, int valor) {
     return novoItem; 
 }
 
-// NoDuplo *removerDupla(NoDuplo *inicio, int valor) {
-//     if (!inicio) return NULL;
-    
-//     NoDuplo *atual = inicio;
-
-//     while (atual) {
-//         if (atual->valor == valor) {
-//             if (atual->ant)  atual->ant->prox = atual->prox;
-//             if (atual->prox) atual->prox->ant = atual->ant;
-
-//             NoDuplo *tmp = atual;
-//             atual = atual->prox;
-//             free(tmp);
-//             break;
-//         }
-//         atual = atual->prox;
-//     }
-
-//     return atual;
-// }
-
 NoDuplo *removerDupla(NoDuplo *inicio, int valor) {
     // caso base 1: lista vazia ou terminou.
     if (!inicio) return NULL;
