@@ -37,27 +37,76 @@ NoLista *novoNo(int valor) {
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
+int inList(int val, NoLista *head) {
+    while (head) {
+            if (val == head->valor) {
+                return 1;
+            }
+            head = head->prox;
+    }
+    return 0;
+}
+
 void removerDuplicados(NoLista *inicio) {
     if (!inicio) return;
 
-    NoLista *ultimo = inicio;
-    NoLista *atual = ultimo->prox;
-    
-    while (atual) {
-        // encontramos o valor
-        if (ultimo->valor == atual->valor) {
-            NoLista *toDel = atual;
-            atual = atual->prox;
-            free(toDel);
+    NoLista *uniqueList = novoNo(inicio->valor);
 
-            ultimo->prox = atual;
-        } else {
-            // andamos uma casa
-            ultimo = atual;
-            atual = atual->prox;
+    NoLista *oldTail = inicio->prox;
+
+
+    // scan the old tail until it reaced the end
+    while (oldTail) {
+
+        if (inList(oldTail->valor, uniqueList)) {
+            NoLista *tmp = oldTail;
+            oldTail = oldTail->prox;
+            free(tmp);
+            continue;
         }
+
+        
+        // addition point
+        NoLista *addPoint = uniqueList;
+        while (addPoint->prox) {
+            addPoint = addPoint->prox;
+        }
+
+        addPoint->prox = novoNo(oldTail->valor);
+        
+        oldTail = oldTail->prox;
     }
+
+    inicio->prox = uniqueList->prox;
+
+    free(uniqueList);
 }
+
+// void removerDuplicados(NoLista *inicio) {
+//     if (!inicio) return;
+
+//     NoLista *uniqueList = novoNo(inicio->valor);
+
+//     NoLista *last = inicio;
+//     NoLista *current = last->prox;
+
+//     while (current) {
+
+//         if (inList(current->valor, uniqueList)) {
+//             NoLista *toDel = current;
+//             current = current->prox;
+//             free(toDel);
+//             break;
+//         }
+        
+//         NoLista *newTail = uniqueList;
+//         uniqueList = novoNo(current->valor);
+//         uniqueList->prox = newTail;
+
+//         last = current;
+//         current = current->prox;
+//     }
+// }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 /* ------------------------------------------------------------------
