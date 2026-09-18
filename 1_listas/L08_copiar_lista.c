@@ -48,35 +48,15 @@ NoLista *novoNo(int valor) {
 NoLista *copiarLista(NoLista *inicio) {
     if (!inicio) return NULL;
 
-    NoLista *newHead = NULL;
-    NoLista *newLast = NULL;
-    
-    newHead = novoNo(inicio->valor);
-    if (!newHead) return NULL;
-    newHead->prox = newLast;
+    NoLista *novoNode = novoNo(inicio->valor);
 
-    inicio = inicio->prox;
-
-    while (inicio) {
-
-        NoLista *new = novoNo(inicio->valor);
-
-        if (!new) {
-            while (newHead) {
-                NoLista *toDelete = newHead;
-                newHead = newHead->prox;
-                free(toDelete);
-            }
-            return NULL;
-        }
-
-        newLast = new;
-        newLast->prox = new;
-
-        inicio = inicio->prox;
+    if (novoNode) {
+        novoNode->prox = copiarLista(inicio->prox);
+        return novoNode;
     }
-    
-    return newHead;
+
+    return NULL;
+
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 

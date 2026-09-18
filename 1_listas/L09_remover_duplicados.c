@@ -38,7 +38,25 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 void removerDuplicados(NoLista *inicio) {
-    /* TODO: implemente aqui */
+    if (!inicio) return;
+
+    NoLista *ultimo = inicio;
+    NoLista *atual = ultimo->prox;
+    
+    while (atual) {
+        // encontramos o valor
+        if (ultimo->valor == atual->valor) {
+            NoLista *toDel = atual;
+            atual = atual->prox;
+            free(toDel);
+
+            ultimo->prox = atual;
+        } else {
+            // andamos uma casa
+            ultimo = atual;
+            atual = atual->prox;
+        }
+    }
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
