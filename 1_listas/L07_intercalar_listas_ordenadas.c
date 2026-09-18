@@ -58,26 +58,14 @@ NoLista *intercalarOrdenadas(NoLista *L1, NoLista *L2) {
     
     // caso condicional: as duas existem, precisamos comparar e colocar o menor valor
     if (L1 && L2) {
-        NoLista *menor, *maior;
         if (L1->valor < L2->valor) {
-            menor = L1;
-            maior = L2;
+            newNode = novoNo(L1->valor);
+            newNode->prox = intercalarOrdenadas(L1->prox, L2);
         } else {
-            menor = L2;
-            maior = L1;
+            newNode = novoNo(L2->valor);
+            newNode->prox = intercalarOrdenadas(L1, L2->prox);
         }
-        newNode = novoNo(L2->valor);
-        newNode->prox = intercalarOrdenadas(L1, L2->prox);
         return newNode;
-
-        // if (L1->valor < L2->valor) {
-        //     newNode = novoNo(L1->valor);
-        //     newNode->prox = intercalarOrdenadas(L1->prox, L2);
-        // } else {
-        //     newNode = novoNo(L2->valor);
-        //     newNode->prox = intercalarOrdenadas(L1, L2->prox);
-        // }
-        // return newNode;
     }
     
     // caso final: uma das listas terminou, compiamos a que sobrou ate as duas acabarem ne caso base
