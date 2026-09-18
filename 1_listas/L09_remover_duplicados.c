@@ -39,9 +39,7 @@ NoLista *novoNo(int valor) {
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 int inList(int val, NoLista *head) {
     while (head) {
-            if (val == head->valor) {
-                return 1;
-            }
+            if (val == head->valor) { return 1; }
             head = head->prox;
     }
     return 0;
@@ -50,63 +48,32 @@ int inList(int val, NoLista *head) {
 void removerDuplicados(NoLista *inicio) {
     if (!inicio) return;
 
-    NoLista *uniqueList = novoNo(inicio->valor);
-
-    NoLista *oldTail = inicio->prox;
-
-
-    // scan the old tail until it reaced the end
-    while (oldTail) {
-
-        if (inList(oldTail->valor, uniqueList)) {
-            NoLista *tmp = oldTail;
-            oldTail = oldTail->prox;
-            free(tmp);
-            continue;
+    // - Vamos criar uma lista de itens unicos 
+    NoLista *uniqueList = novoNo(inicio->valor); // (primeiro item da lista tem o mesmo valor de inicio)
+    NoLista *deleteTemp;  // ponteiro auxiliar para deletar itens verificados;
+    
+    // - Percorremos todo o resto da lista original
+    NoLista *current = inicio->prox; // nao precisamos checar o primeiro item
+    while (current) {
+        // se acharmos um valor unico, colocarmos na lista de itens unicos
+        if (!inList(current->valor, uniqueList)) {
+            NoLista *lastInUnique = uniqueList;
+            while (lastInUnique->prox) { lastInUnique = lastInUnique->prox; }
+            lastInUnique->prox = novoNo(current->valor);
         }
-
-        
-        // addition point
-        NoLista *addPoint = uniqueList;
-        while (addPoint->prox) {
-            addPoint = addPoint->prox;
-        }
-
-        addPoint->prox = novoNo(oldTail->valor);
-        
-        oldTail = oldTail->prox;
+        // deletamos o que acabamos de checar e passamos para checar o proximo
+        deleteTemp = current;
+        current = current->prox;
+        free(deleteTemp);
     }
 
-    inicio->prox = uniqueList->prox;
-
-    free(uniqueList);
+    // Conectamos o inicio ao restante de itens unicos da lista
+    inicio->prox = uniqueList->prox; 
+    
+    // removemos o primeiro item duplicado que sobrou.
+    free(uniqueList); 
 }
 
-// void removerDuplicados(NoLista *inicio) {
-//     if (!inicio) return;
-
-//     NoLista *uniqueList = novoNo(inicio->valor);
-
-//     NoLista *last = inicio;
-//     NoLista *current = last->prox;
-
-//     while (current) {
-
-//         if (inList(current->valor, uniqueList)) {
-//             NoLista *toDel = current;
-//             current = current->prox;
-//             free(toDel);
-//             break;
-//         }
-        
-//         NoLista *newTail = uniqueList;
-//         uniqueList = novoNo(current->valor);
-//         uniqueList->prox = newTail;
-
-//         last = current;
-//         current = current->prox;
-//     }
-// }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 /* ------------------------------------------------------------------
