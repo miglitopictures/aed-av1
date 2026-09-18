@@ -43,12 +43,55 @@ NoDuplo *novoNoDuplo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoDuplo *inserirInicioDupla(NoDuplo *inicio, int valor) {
-    /* TODO: implemente aqui */
-    return inicio;
+    if (!inicio) return novoNoDuplo(valor);
+
+    NoDuplo *novoItem = novoNoDuplo(valor);
+    novoItem->prox = inicio;
+    inicio->ant = novoItem;
+    return novoItem; 
 }
 
+// NoDuplo *removerDupla(NoDuplo *inicio, int valor) {
+//     if (!inicio) return NULL;
+    
+//     NoDuplo *atual = inicio;
+
+//     while (atual) {
+//         if (atual->valor == valor) {
+//             if (atual->ant)  atual->ant->prox = atual->prox;
+//             if (atual->prox) atual->prox->ant = atual->ant;
+
+//             NoDuplo *tmp = atual;
+//             atual = atual->prox;
+//             free(tmp);
+//             break;
+//         }
+//         atual = atual->prox;
+//     }
+
+//     return atual;
+// }
+
 NoDuplo *removerDupla(NoDuplo *inicio, int valor) {
-    /* TODO: implemente aqui */
+    // caso base 1: lista vazia ou terminou.
+    if (!inicio) return NULL;
+    
+    // caso base 2: achamos o valor!
+    if (inicio->valor == valor) {
+        // rewiring the list
+        // pegamos o ponteiro para o proximo (pode ser NULL)
+        NoDuplo *next = inicio->prox;
+        // caso o next exista,  next->ant deve apontar para o anterior de inicio (pode ser NULL)
+        if (next) next->ant = inicio->ant;
+        // liberamos a memoria do node que vamos deletar
+        free(inicio);
+        return next;
+    }
+
+    // Nao encontramos o valor, continuamos procurando recursivamente.
+    inicio->prox = removerDupla(inicio->prox, valor);
+
+    // Retornamos o inicio da lista (alterada no meio).
     return inicio;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */

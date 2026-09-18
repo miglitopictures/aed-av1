@@ -49,8 +49,8 @@ void removerDuplicados(NoLista *inicio) {
     if (!inicio) return;
 
     // - Vamos criar uma lista de itens unicos 
-    NoLista *uniqueList = novoNo(inicio->valor); // (primeiro item da lista tem o mesmo valor de inicio)
-    NoLista *uniqueTail = uniqueList; // (primeiro item da lista tem o mesmo valor de inicio)
+    NoLista *uniqueHead = novoNo(inicio->valor); // (primeiro item da lista tem o mesmo valor de inicio)
+    NoLista *uniqueTail = uniqueHead; // (primeiro item da lista tem o mesmo valor de inicio)
     NoLista *deleteTemp;  // ponteiro auxiliar para deletar itens verificados;
     
     // - Percorremos todo o resto da lista original
@@ -58,7 +58,7 @@ void removerDuplicados(NoLista *inicio) {
     while (current) {
         
         // se acharmos um valor unico, colocarmos na lista de itens unicos
-        if (!inList(current->valor, uniqueList)) {
+        if (!inList(current->valor, uniqueHead)) {
             uniqueTail->prox = novoNo(current->valor);
             uniqueTail = uniqueTail->prox;
         }
@@ -70,10 +70,10 @@ void removerDuplicados(NoLista *inicio) {
     }
 
     // Conectamos o inicio ao restante de itens unicos da lista
-    inicio->prox = uniqueList->prox; 
+    inicio->prox = uniqueHead->prox; 
 
     // removemos o primeiro item duplicado que sobrou.
-    free(uniqueList); 
+    free(uniqueHead); 
 }
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */

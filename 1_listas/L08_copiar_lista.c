@@ -46,17 +46,28 @@ NoLista *novoNo(int valor) {
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
 NoLista *copiarLista(NoLista *inicio) {
+    // Caso base: passaram uma lista vazia ou chegamos ao final
     if (!inicio) return NULL;
 
+    // Tentamos copiar copiamos o atual
     NoLista *novoNode = novoNo(inicio->valor);
+    if (!novoNode) return NULL; // problema de alocacao
 
-    if (novoNode) {
-        novoNode->prox = copiarLista(inicio->prox);
-        return novoNode;
+    // Recursivamente copiamos o proximo para novoNode->prox
+    novoNode->prox = copiarLista(inicio->prox);
+
+    // Se o item que tentei copiar nao eh null,
+    // mas minha chamada recursiva retorna null,
+    // tivemos problema de alocacao.
+    if (inicio->prox && !novoNode->prox) {
+        // Liberamos o item atual e retornamos null
+        // (vai recursivamente free todos os itens alocados)
+        free(novoNode);
+        return NULL;
     }
 
-    return NULL;
-
+    // Caso as alocacoes recursivas tenham dado certo sem conflito, retornamos o novo node!!
+    return novoNode;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
