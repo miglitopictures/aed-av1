@@ -76,9 +76,91 @@ void liberarPilhaChar(PilhaChar *p) {
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>> SUA SOLUÇÃO AQUI >>>>>>>>>>>>>>>>>>>>>>>>>> */
+// int balanceada(const char *expr) {
+//     // if (!expr) return 1; // uma string vazia e balanceada
+
+//     PilhaChar *stack = criarPilhaChar();    
+
+//     while (*expr != '\0')
+//     {
+//         if (stack->topo) {
+//             switch (stack->topo->c)
+//             {
+//             case '(':
+//                 if (*expr == ')') { desempilharChar(stack, NULL); break; }
+//                 empilharChar(stack, *expr);
+//                 break;
+//             case '[':
+//                 if (*expr == ']') { desempilharChar(stack, NULL); break; }
+//                 empilharChar(stack, *expr);
+//                 break;
+//             case '{':
+//                 if (*expr == '}') { desempilharChar(stack, NULL); break;}
+//                 empilharChar(stack, *expr);
+//                 break;
+//                 default:
+//                 break;
+//             }
+//             expr = (expr+1);
+//         }
+//         empilharChar(stack, *expr);
+//     }
+    
+//     return pilhaCharVazia(stack) == 1;
+// }
+
+
 int balanceada(const char *expr) {
-    /* TODO: implemente aqui */
-    return -1;
+    // if (!expr) return 1; // uma string vazia e balanceada
+
+    PilhaChar *stack = criarPilhaChar();
+
+    while (1)
+    {
+        if (*expr == '\0') break;
+
+        if (*expr == '(' || *expr == '[' || *expr == '{') {
+            empilharChar(stack, *expr);
+            expr = (expr+1);
+            continue;
+        }
+
+        switch (*expr)
+        {
+        case ')':
+            if (!stack->topo) return 0;
+            if (stack->topo->c == '(') desempilharChar(stack, NULL);
+            break;
+
+        case ']':
+            if (!stack->topo) return 0;
+            if (stack->topo->c == '[') desempilharChar(stack, NULL);
+            break;
+        case '}':
+            if (!stack->topo) return 0;
+            if (stack->topo->c == '{') desempilharChar(stack, NULL);
+            break;
+        default:
+            break;
+        }
+    
+
+        expr = (expr+1);
+    }
+
+    int resultado = pilhaCharVazia(stack);
+
+    if (resultado == 0) {
+        while (stack->topo)
+        {
+            NoChar *tmp = stack->topo;
+            stack->topo = stack->topo->prox;
+            free(tmp);
+        }
+    }
+
+    free(stack);
+    return resultado;
 }
 /* <<<<<<<<<<<<<<<<<<<<<<<<<< FIM DA SUA SOLUÇÃO <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
